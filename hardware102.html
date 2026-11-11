@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware 102 | Devlog</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span class="icon">&#9881;</span> DEVLOG
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">← Back to Home</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <article class="card article-detail">
+      
+      <header class="article-header">
+        <span class="post-date">10/09/2026</span>
+        <h1>Hardware 102: Prototyping an LED Slot Machine</h1>
+        
+        <div class="post-tags" style="margin-top: 1rem;">
+          <span class="tag">Basics</span>
+          <span class="tag">Microcontrollers</span>
+          <span class="tag">Software / Firmware</span>
+        </div>
+      </header>
+
+      <hr>
+
+      <section class="article-content">
+        <h2>Concept & Concepting</h2>
+        <p>
+          Building on the basics learned in the first lesson, I set out to build a mini LED slot machine game using the Raspberry Pi Pico kit. Inspired by traditional fruit machines (where you pull a lever and hope to align three matching symbols), my goal was to simulate the mechanic using three LEDs as the "reels" and a push button as the "lever."
+        </p>
+
+        <h2>Game Rules & Planned Logic</h2>
+        <ul>
+          <li><strong>Idle State:</strong> Pressing a push button initiates the game cycle.</li>
+          <li><strong>Spinning Phase:</strong> The three LEDs cycle rapidly in a sequence to simulate spinning reels.</li>
+          <li><strong>Stopping & Win Check:</strong> The LEDs stop sequentially on a random pattern. If all 3 LEDs end up turned <code>ON</code>, the player wins (triggering a victory flash); otherwise, it signals a loss.</li>
+        </ul>
+
+        <h2>Challenges & Current Blockers</h2>
+        <p>
+          While the circuit wiring (connecting 3 LEDs with resistors to GPIO pins and wiring a button) was straightforward, implementing the game loop in MicroPython proved tricky:
+        </p>
+        <ul>
+          <li><strong>Non-blocking timing:</strong> Using standard <code>time.sleep()</code> pauses execution completely, making it hard to register button presses or stagger the stopping of each individual LED cleanly.</li>
+          <li><strong>Randomization:</strong> Implementing pseudo-random state generation in MicroPython required logic I wasn't fully familiar with yet.</li>
+        </ul>
+
+        <h2>Key Takeaways & Next Attempt</h2>
+        <p>
+          Although I didn't get the game working completely before the end of the bootcamp session, the attempt forced me to think about microcontroller <strong>state machines</strong> and timing loops instead of just turning pins on and off.
+        </p>
+        <p>
+          My next step will be breaking down the logic into smaller chunks: getting single-LED timing working first before combining all three into the main game loop.
+        </p>
+
+        <h2>Sources</h2>
+        <ul>
+          <li>
+            <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico" target="_blank" rel="noopener noreferrer">Getting Started with Raspberry Pi Pico</a>
+          </li>
+          <li>
+            <a href="https://docs.micropython.org/en/latest/library/random.html" target="_blank" rel="noopener noreferrer">MicroPython Random Library Documentation</a>
+          </li>
+        </ul>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Devlog Serena Huel</p>
+  </footer>
+
+</body>
+</html>
