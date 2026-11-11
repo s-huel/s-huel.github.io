@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware 103 | Devlog</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span class="icon">&#9881;</span> DEVLOG
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Back to Home</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <article class="card article-detail">
+      
+      <header class="article-header">
+        <span class="post-date">22/10/2026</span>
+        <h1>Hardware 103: Reverse Engineering the Action Thermal Printer</h1>
+        
+        <div class="post-tags" style="margin-top: 1rem;">
+          <span class="tag">Reverse Engineering</span>
+          <span class="tag">Software / Firmware</span>
+          <span class="tag">Electronics & Circuits</span>
+        </div>
+      </header>
+
+      <hr>
+
+      <section class="article-content">
+        <h2>Overview & Objectives</h2>
+        <p>
+          During the Hardware 103 session, my team of three decided to dive into hardware reverse engineering. We selected a budget pocket thermal label printer from Action (Fichero series) to analyze how it receives print commands and to see if we could control it independently.
+        </p>
+
+        <h2>Why Reverse Engineer a Budget Printer?</h2>
+        <p>
+          Cheap consumer smart hardware often comes with significant drawbacks:
+        </p>
+        <ul>
+          <li><strong>Proprietary Apps:</strong> Off-the-shelf apps frequently require account creation, location permissions, and show unwanted ads just to print a simple text label.</li>
+          <li><strong>Vendor Lock-in:</strong> If the manufacturer shuts down their cloud server or stops updating the app, the physical device becomes e-waste.</li>
+          <li><strong>Customization:</strong> Reverse engineering the communication protocol allows developers to print automatically from custom scripts, microcontrollers, or web apps without human intervention.</li>
+        </ul>
+
+        <h2>Investigation & Technical Findings</h2>
+        <p>
+          Instead of building an exploit entirely from scratch, we started by researching existing open-source work surrounding these chipset families (such as BLE GATT services or serial packet structures common in thermal receipt printers).
+        </p>
+        <p>
+          We located an open-source GitHub repository detailing the custom Bluetooth packet headers used by the device. By leveraging a Web Bluetooth API script, we succeeded in establishing a direct connection to the printer from a browser interface—bypassing the official smartphone application entirely.
+        </p>
+
+        <h2>Key Learnings</h2>
+        <ul>
+          <li><strong>Packet Structure:</strong> Understanding bitmap conversion and line-by-line rasterization for thermal printheads.</li>
+          <li><strong>Web Bluetooth (BLE):</strong> How modern browsers communicate with low-energy embedded peripherals.</li>
+          <li><strong>Hardware Sovereignty:</strong> Unlocking locked-down commercial hardware for open open-source control.</li>
+        </ul>
+
+        <h2>Proof of Concept & Test Prints</h2>
+        <p>
+            Here are the test labels printed directly via our custom script without using the official Action app:
+        </p>
+
+        <div class="article-image-container">
+            <img src="images/printed-labels.jpg" alt="Thermal printer test stickers pasted on laptop" class="article-img">
+            <span class="img-caption">Custom thermal labels printed and pasted on my laptop.</span>
+        </div>
+
+        <h2>Sources & Repositories</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/0xMH/fichero-printer" target="_blank" rel="noopener noreferrer">Reverse Engineering Repo</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API" target="_blank" rel="noopener noreferrer">MDN Web Bluetooth API Documentation</a>
+          </li>
+        </ul>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Devlog Serena Huel</p>
+  </footer>
+
+</body>
+</html>
