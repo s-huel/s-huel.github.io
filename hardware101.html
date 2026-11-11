@@ -1,29 +1,85 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Devlog | Hardware 101</title>
+  <title>Hardware 101 | Devlog</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav class="navbar">
+  <nav class="navbar">
     <div class="logo">
-      <span class="icon">&#9881;</span> DEVLOG</span>
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span class="icon">&#9881;</span> DEVLOG
+      </a>
     </div>
     <ul class="nav-links">
-      <li><a href="#">?</a></li>
+      <li><a href="index.html">Back to Home</a></li>
     </ul>
   </nav>
 
-  <header class="hero">
-    <div class="hero-content">
-      <span class="badge">Embedded Robotica Engineer - Dark Tech</span>
-      <h1>Hardware 101</h1>
-      <p>I worked for the first time with embedded during the Hardware 101 class...</p>
-    </div>
-  </header>
+  <main class="container">
+    <article class="card article-detail">
+      
+      <header class="article-header">
+        <span class="post-date">03/09/2026</span>
+        <h1>Hardware 101: First Steps with Embedded Systems & Magic Smoke</h1>
+        
+        <div class="post-tags" style="margin-top: 1rem;">
+          <span class="tag">Basics</span>
+          <span class="tag">Electronics & Circuits</span>
+          <span class="tag">Software / Firmware</span>
+        </div>
+      </header>
+
+      <hr>
+
+      <section class="article-content">
+        <h2>Introduction</h2>
+        <p>
+          During the first week of the Dark Tech studio, I had my very first hands-on embedded systems class. Coming into it, I expected a smooth process, but hardware development quickly taught me that things rarely work on the first try.
+        </p>
+
+        <h2>Phase 1: Getting the Basics Working</h2>
+        <p>
+          I started out following the initial setup tutorials. Setting up the breadboard, configuring inputs/outputs, and getting code to communicate with physical components was challenging at first. However, after troubleshooting my connections and code logic, I successfully got the basic circuit working: buttons triggering LEDs cleanly.
+        </p>
+
+        <h2>Phase 2: The LCD Experiment & The Magic Smoke</h2>
+        <p>
+          Feeling confident after completing the basics, I wanted to take on a bigger challenge: building a mini display using an LCD screen. 
+        </p>
+        <p>
+          I found a tutorial online and wired everything up according to what I thought was the correct schematic. But as soon as I powered up the board, smoke started coming off the LCD screen. I immediately cut the power, but the display was already damaged beyond repair.
+        </p>
+
+        <h2>Root Cause Analysis & What I Learned</h2>
+        <p>
+          After getting a replacement display and carefully reviewing the pinout diagram against my original wiring, I realized my mistake: <strong>I had reversed the VCC and GND connections (reverse polarity)</strong>. 
+        </p>
+        <p>
+          This costly mistake taught me two critical rules for embedded development:
+        </p>
+        <ul>
+          <li><strong>Double-check polarity:</strong> Always verify power ($VCC$) and ground ($GND$) pins with a multimeter or datasheet before applying power.</li>
+          <li><strong>Datasheets > Online Tutorials:</strong> Pinouts can vary between different manufacturers of the same component—never assume two LCD screens have identical pin layouts.</li>
+        </ul>
+
+        <h2>Sources</h2>
+          <ul>
+            <li><a href=" https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico">Getting started with the Pico</a></li>
+            <li><a href=" https://randomnerdtutorials.com/raspberry-pi-pico-i2c-lcd-display-micropython/">LCD Display</a></li>
+          </ul>
+      </section>
+
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 - Devlog Serena Huel</p>
+  </footer>
 
 </body>
+</html>
