@@ -46,7 +46,7 @@
         <ul>
           <li><strong>Idle State:</strong> Pressing a push button initiates the game cycle.</li>
           <li><strong>Spinning Phase:</strong> The three LEDs cycle rapidly in a sequence to simulate spinning reels.</li>
-          <li><strong>Stopping & Win Check:</strong> The LEDs stop sequentially on a random pattern. If all 3 LEDs end up turned <code>ON</code>, the player wins (triggering a victory flash); otherwise, it signals a loss.</li>
+          <li><strong>Stopping & Win Check:</strong> The LEDs stop sequentially on a random pattern. If all 3 LEDs end up turned ON, the player wins (triggering a victory flash); otherwise, it signals a loss.</li>
         </ul>
 
         <h2>Challenges & Current Blockers</h2>
@@ -54,7 +54,7 @@
           While the circuit wiring (connecting 3 LEDs with resistors to GPIO pins and wiring a button) was straightforward, implementing the game loop in MicroPython proved tricky:
         </p>
         <ul>
-          <li><strong>Non-blocking timing:</strong> Using standard <code>time.sleep()</code> pauses execution completely, making it hard to register button presses or stagger the stopping of each individual LED cleanly.</li>
+          <li><strong>Non-blocking timing:</strong> Using standard time.sleep() pauses execution completely, making it hard to register button presses or stagger the stopping of each individual LED cleanly.</li>
           <li><strong>Randomization:</strong> Implementing pseudo-random state generation in MicroPython required logic I wasn't fully familiar with yet.</li>
         </ul>
 
